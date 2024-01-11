@@ -1,0 +1,188 @@
+h1
+{
+font-family: "Segoe UI Light","Segoe UI","Segoe WP Light","Segoe WP","Segoe UI Latin Light",HelveticaNeue,Helvetica,Tahoma,ArialUnicodeMS,sans-serif;
+font-weight: 200;
+font-size: 36px;
+line-height: 1em;
+margin-top: 0px;
+margin-bottom: 0px;
+padding-top: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
+letter-spacing: -1px;
+border-top-width: 0px;
+outline-width: 0px;
+vertical-align: baseline;
+background: transparent;
+}
+
+h5
+{
+font-family: "Segoe UI Light","Segoe UI","Segoe WP Light","Segoe WP","Segoe UI Latin Light",HelveticaNeue,Helvetica,Tahoma,ArialUnicodeMS,sans-serif;
+font-weight: 200;
+font-size: 12px;
+line-height: 1em;
+margin-top: 0px;
+margin-bottom: 0px;
+padding-top: 12px;
+padding-right: 0px;
+padding-bottom: 38px;
+letter-spacing: 0px;
+border-top-width: 0px;
+outline-width: 0px;
+vertical-align: baseline;
+background: transparent;
+text-align: center;
+}
+
+body
+{
+  background-color: #E7F1F5;
+  min-width: 980px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  border-top-width: 0px;
+  outline-width: 0px;
+  vertical-align: baseline;
+  display: block;
+}
+
+container3D
+{
+  display: block;
+  position: relative;
+}
+
+#globalcontainer
+{
+   width:960px;
+   position:relative;
+   margin-top: 17px;
+   margin-right: auto;/*auto for centered*/
+   margin-bottom: 0px;
+   margin-left: auto;
+   background-color: transparent;
+   z-index:0;
+   overflow-x: visible;
+   overflow-y: visible;
+   padding-top: 0px;
+   padding-bottom: 0px;
+   border-top-width: 0px;
+}
+
+#maincontainer
+{
+   width:960px;
+   min-height:480px;
+   position:relative;
+   display: block;
+   margin-top: 0px;
+   padding-top: 0px;
+   border-top-width: 0px;
+   outline-width: 0px;
+   vertical-align: baseline;
+}
+
+#myheader
+{
+  display: block;
+  min-height:120px;
+  background-color: #000000;
+}
+
+#myheaderspace
+{
+  display: block;
+  min-height:17px;
+}
+
+#myfooter
+{
+  display: block;
+}
+
+#myphoto
+{
+width: 240px;
+height: 240px;
+display: block;
+background: url("img/angelos.html") 0 0 no-repeat;
+}
+
+#mymainmenu
+{
+width: 216px;
+display: block;
+padding-top: 10px;
+padding-left: 12px;
+padding-right: 12px;
+}
+
+#aside
+{
+float: left;
+width: 240px;
+min-height: 480px;
+display: block;
+position:relative;
+background-color: #467C90;
+}
+
+#mainarea {
+float: left;
+width: 708px;
+min-height: 480px;
+display: block;
+position:relative;
+padding-left: 12px;
+}
+
+.sourcecode 
+{
+background:#FFFFFF;
+BORDER-TOP: #000 1px dashed;
+BORDER-BOTTOM: #000 1px dashed;
+BORDER-LEFT: #000 1px dashed;
+BORDER-RIGHT: #000 1px dashed;
+PADDING-BOTTOM: 3px;
+MARGIN: 0px;
+PADDING-LEFT: 4px;
+PADDING-RIGHT: 4px;
+font-family: Courier New, Courier;
+font-size: 10pt;
+COLOR: #000000;
+display: block;
+overflow-wrap:break-word;
+}
+
+.mainmenufont
+{
+color:#FFFFFF;
+font-family: "Segoe UI Light","Segoe UI","Segoe WP Light","Segoe WP","Segoe UI Latin Light",HelveticaNeue,Helvetica,Tahoma,ArialUnicodeMS,sans-serif;
+font-weight: 200;
+font-size: 18px;
+}
+
+.mainfont
+{
+color:#000000;
+font-family: "Segoe UI Light","Segoe UI","Segoe WP Light","Segoe WP","Segoe UI Latin Light",HelveticaNeue,Helvetica,Tahoma,ArialUnicodeMS,sans-serif;
+font-weight: 200;
+font-size: 14px;
+}
+
+.mainfont2
+{
+color:#000000;
+font-family: "Segoe UI Light","Segoe UI","Segoe WP Light","Segoe WP","Segoe UI Latin Light",HelveticaNeue,Helvetica,Tahoma,ArialUnicodeMS,sans-serif;
+font-weight: 200;
+font-size: 18px;
+}
+
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}

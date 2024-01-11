@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<!-- Mirrored from research.dwi.ufl.edu/projects/ufdw/j4k/faq.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jan 2024 19:31:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Java for Kinect (J4K) Library</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../ufdw.css">
+</head>
+<body>
+
+
+<div id="globalcontainer">
+	<div id="myheader"><a href="http://www.digitalworlds.ufl.edu/programs/"><img src="j4k_banner.png"></a></div>
+	<div id="myheaderspace"></div>
+	<div id="maincontainer">
+		<div id="aside">
+			<div id="mymainmenu">
+			<a href="../index-2.html"><font class="mainmenufont">UFDW Java library</font></a><br><br>
+			<a href="index.html"><font class="mainmenufont">J4K Java library</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="J4KSDK.html"><font class="mainmenufont">J4KSDK.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="DepthMap.html"><font class="mainmenufont">DepthMap.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="Skeleton.html"><font class="mainmenufont">Skeleton.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="VideoFrame.html"><font class="mainmenufont">VideoFrame.class API</font></a><br><br>
+			<a href="examples.html"><font class="mainmenufont">Source Code Examples</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="SimpleExample.html"><font class="mainmenufont">SimpleExample</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="VideoViewerApp.html"><font class="mainmenufont">VideoViewerApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="KinectViewerApp.html"><font class="mainmenufont">KinectViewerApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="AugmentedRealityApp.html"><font class="mainmenufont">AugmentedRealityApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="ImageAvatarApp.html"><font class="mainmenufont">ImageAvatarApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="XEDConvertApp.html"><font class="mainmenufont">XEDConvertApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="MultipleKinectApp.html"><font class="mainmenufont">MultipleKinectApp</font></a><br><br>			<a href="projects.html"><font class="mainmenufont">J4K Projects Gallery</font></a> <img src="star.gif" align="middle"><br>
+			<a href="papers.html"><font class="mainmenufont">Published Papers</font></a><br><br>
+			<a href="../download.html"><font class="mainmenufont">Download</font></a><br>
+			<a href="eclipse.html"><font class="mainmenufont">Install in Eclipse</font></a><br>
+			<a href="http://www.youtube.com/watch?v=q0K4Y4g-hj0"><font class="mainmenufont">Watch video tutorial</font></a><br><br>
+			<a href="people.html"><font class="mainmenufont">People</font></a><br><br>
+			<a href="faq.html"><font class="mainmenufont">Frequently Asked Questions</font></a><br><br>
+			</div>
+		</div>
+		<div id="mainarea"><h1>Frequently Asked Questions</h1>
+<br>
+<font class="mainfont">Please browse the following list of frequently asked questions before communicating with us.</font><br><br>
+
+<font class="mainfont"><li>
+<b>How should I cite the J4K library in my paper?</b><br>
+You can cite the following paper that first presented the use of this library:<br>
+		  A. Barmpoutis. "Tensor Body: Real-time Reconstruction of the Human Body and Avatar Synthesis from RGB-D",
+          <i>IEEE Transactions on Cybernetics, Special issue on Computer Vision for RGB-D Sensors: Kinect and Its Applications</i>, October 2013, Vol. 43(5), pp. 1347-1356.
+</li></font><br>
+
+<font class="mainfont"><li>
+<b>How can I download the J4K library?</b><br>
+The J4K library for Kinect is included in the UFDW Java Library that can be downloaded from the <a href="../download.html">download page (click here)</a>. 
+</li></font><br>
+
+
+<font class="mainfont"><li>
+<b>In just a few words how does J4K work exactly, how does it process the information from Kinect, and how can we access this information?</b><br>
+J4K uses Microsoft Kinect SDK through a DLL library that was specially made to communicate with Java. This DLL opens various streams of the Kinect Sensor and creates an independent thread that controlls the events of the kinect streams. Whenever a kinect event occurs, the thread calls a Java method such as onDepthFrameEvent, onSkeletonFrameEvent, onColorFrameEvent, etc. The data related to this event are passed as arguments to these callback Java methods. Java programmers who use J4K just need to create a class that extends the J4KSDK class and provide implementation to these "on...Event" methods, i.e. code what should happen when a new skeleton frame is received, or a new depth frame is received, etc. You can see several simple examples at: 
+<a href="http://research.dwi.ufl.edu/ufdw/j4k/examples.php">http://research.dwi.ufl.edu/ufdw/j4k/examples.php</a>
+</li></font><br>
+
+
+<font class="mainfont"><li>
+<b>Is there any documentation available?</b><br>
+Yes. The API of the 4 core classes in the J4K library for Kinect is presented in detail in the web-sites that can be found on the menu on the left of this page and listed also here: <a href="J4KSDK.html">J4KSDK.class API</a>, <a href="DepthMap.html">DepthMap.class API</a>, <a href="Skeleton.html">Skeleton.class API</a>, <a href="VideoFrame.html">VideoFrame.class API</a>. 
+</li></font><br>
+
+<font class="mainfont"><li>
+<b>How can I use the short[] depth_frame data provided in the onDepthFrameEvent method?</b><br>
+The values in the depth_frame array are not consistent between different versions of Kinect. For example in the old Kinects this array contains the IDs of the players and the depth information packed together as 13+3 bits. Also the data are stored as unsigned shorts, therefore you have to take care of the sign if you indeed want to use this array. However all this is simply taken care of if you use the J4K API, so you don't have to deal with all these details. J4K unpacks the data for you and gives you the depth in the XYZ array (you must initialize the J4KSDK.XYZ stream along with your other streams, when you start() the kinect), and similarly the player IDs are given in the player_index array. The units in the XYZ array is meters, and the coordinates of the first point are: x=XYZ[0]; y=XYZ[1]; z=XYZ[2]; the coordinates of the second point are: x=XYZ[3]; y=XYZ[4]; z=XYZ[5]; etc. You can use the XYZ array as a depth map using the <a href="DepthMap.html">DepthMap.class API</a>, and you can find more stream flags at: <a href="J4KSDK.html">J4KSDK.class API</a>. 
+</li></font><br> 
+
+<font class="mainfont"><li>
+<b>How can I map the video frames to the depth frames? </b><br>
+The mapping infromation is included in the UV array provided by the onDepthFrameEvent method (you must initialize the J4KSDK.UV stream along with your other streams, when you start() the kinect). If you take from the XYZ array the X,Y,Z coordinates of a particular data point, say X[point] Y[point] Z[point], this point corresponds to the video pixel location U[point],V[point] from the UV array. The video pixel locations are given in the interval 0-1, where the left-most pixel is 0 and the right-most is 1, etc. So the bottom line is that you don't need to move any point in the 3D space. X,Y,Z is already in the correct position and the color of it is in the video pixel location U,V. You can use the XYZ and UV arrays together to create a colored depth map using the <a href="DepthMap.html">DepthMap.class API</a>. 
+</li></font><br> 
+
+<font class="mainfont"><li>
+<b>How can I covert my XED files using XEDConvertApp?</b><br>
+The purpose of the source code example <a href="XEDConvertApp.html">XEDConvertApp</a> is to train you on how to use the <a href="index.html">Java library for Kinect (J4K)</a> so that you can open a xed file and save it in your own custom format.<br>
+
+&nbsp;&nbsp;&nbsp;Before you do anything else it is essential that you read:
+<a href="http://research.dwi.ufl.edu/ufdw/j4k/examples.php#how">http://research.dwi.ufl.edu/ufdw/j4k/examples.php#how</a>
+and then follow the steps to install the source code in your computer:
+<a href="http://research.dwi.ufl.edu/ufdw/j4k/eclipse.php">http://research.dwi.ufl.edu/ufdw/j4k/eclipse.php</a>
+<br>
+&nbsp;&nbsp;&nbsp;If you just want to use the Java binary compiled from the XEDConvertApp source code (not recommended because it is just an example and therefore saves the data in our custom format not yours, which can be easily done if you change the source code) you can do the following:<br>
+1) Connect the kinect sensor to your computer and a power outlet<br>
+2) Open the XEDConvertApp application<br>
+3) Open one of your XED files using the Microsoft Kinect Studio<br>
+4) Connect the Kinect Studio with XEDConvertApp by clicking on the thunder icon of the Microsoft Kinect Sudio.<br>
+5) Play the xed file from the Microsoft Kinect Studio<br>
+6) Record in real time the output of the xed file from the XEDConvertApp by specifying the output file name
+</li></font><br>
+
+<font class="mainfont"><li>
+<b>Where is the source code?</b><br>
+The J4K library for Kinect is included in the UFDW Open-Source Java Library. The source code can be downloaded using git from the <a href="../gitufdw.png">UFDW Git repository</a> as an eclipse project. If you need help follow the instructions in the <a href="../download.html">download page (see Section about Open Source project)</a>. 
+</li></font><br>
+
+<font class="mainfont"><li>
+<b>I have another question, who should I contact?</b><br>
+You can contact <a href="http://www.digitalworlds.ufl.edu/angelos">Prof. Angelos Barmpoutis</a>. His contact details can be found <a href="http://www.digitalworlds.ufl.edu/angelos">here</a>. 
+</li></font><br>
+
+<br>
+
+<br>
+<font class="mainfont"><b>Disclaimer:</b> The names JAVA and KINECT and their associated logos are trademarks of their respective copyright owners Oracle and Microsoft. None of these companies endorse, fund, or are in any way associated with the J4K library.</font>
+<br>
+<br>
+<font class="mainfont"><b>Disclaimer:</b> This software is provided for free without any warranty expressed or implied for academic, research, and strictly non commercial purposes only. By downloading this library you accept the <a href="../terms.html" target="_blank">Terms and Conditions</a>.
+</font>
+<br>
+<br>
+</div>
+
+	</div>
+	<div id="myfooter"><h5><a href="http://www.digitalworlds.ufl.edu/">University of Florida, Digital Worlds Institute, P.O.Box 115810, 101 Norman Gym, Gainesville, FL 32611-5810, USA</a></h5></div>
+</div>
+
+</body>
+
+<!-- Mirrored from research.dwi.ufl.edu/projects/ufdw/j4k/faq.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jan 2024 19:31:25 GMT -->
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<!-- Mirrored from research.dwi.ufl.edu/projects/ufdw/j4k/J4KSDK.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jan 2024 19:31:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Java for Kinect (J4K) Library</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../ufdw.css">
+</head>
+<body>
+
+
+<div id="globalcontainer">
+	<div id="myheader"><a href="http://www.digitalworlds.ufl.edu/programs/"><img src="j4k_banner.png"></a></div>
+	<div id="myheaderspace"></div>
+	<div id="maincontainer">
+		<div id="aside">
+			<div id="mymainmenu">
+			<a href="../index-2.html"><font class="mainmenufont">UFDW Java library</font></a><br><br>
+			<a href="index.html"><font class="mainmenufont">J4K Java library</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="J4KSDK.html"><font class="mainmenufont">J4KSDK.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="DepthMap.html"><font class="mainmenufont">DepthMap.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="Skeleton.html"><font class="mainmenufont">Skeleton.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="VideoFrame.html"><font class="mainmenufont">VideoFrame.class API</font></a><br><br>
+			<a href="examples.html"><font class="mainmenufont">Source Code Examples</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="SimpleExample.html"><font class="mainmenufont">SimpleExample</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="VideoViewerApp.html"><font class="mainmenufont">VideoViewerApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="KinectViewerApp.html"><font class="mainmenufont">KinectViewerApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="AugmentedRealityApp.html"><font class="mainmenufont">AugmentedRealityApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="ImageAvatarApp.html"><font class="mainmenufont">ImageAvatarApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="XEDConvertApp.html"><font class="mainmenufont">XEDConvertApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="MultipleKinectApp.html"><font class="mainmenufont">MultipleKinectApp</font></a><br><br>			<a href="projects.html"><font class="mainmenufont">J4K Projects Gallery</font></a> <img src="star.gif" align="middle"><br>
+			<a href="papers.html"><font class="mainmenufont">Published Papers</font></a><br><br>
+			<a href="../download.html"><font class="mainmenufont">Download</font></a><br>
+			<a href="eclipse.html"><font class="mainmenufont">Install in Eclipse</font></a><br>
+			<a href="http://www.youtube.com/watch?v=q0K4Y4g-hj0"><font class="mainmenufont">Watch video tutorial</font></a><br><br>
+			<a href="people.html"><font class="mainmenufont">People</font></a><br><br>
+			<a href="faq.html"><font class="mainmenufont">Frequently Asked Questions</font></a><br><br>
+			</div>
+		</div>
+		<div id="mainarea"><h1>J4KSDK class</h1>
+<br>
+<font class="mainfont">This class implements a <a href="http://www.java.com/">Java</a> binding for the <a href="http://www.microsoft.com/en-us/kinectforwindows/">Microsoft's Kinect SDK</a>. It communicates with a native Windows library, which handles the video, depth, and skeleton streams of the Kinect using the <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/jni/">Java Native Interface (JNI)</a>.<br><br>
+This class is part of the J4K library, which is included in the <a href="http://www.digitalworlds.ufl.edu/">University of Florida Digital Worlds</a> (ufdw.jar) Java library. This library was developed by Prof. <a href="http://www.digitalworlds.ufl.edu/angelos">Angelos Barmpoutis</a>, and further extended by the students and faculty who work in the SAGE program (Serious and Applied Gaming Environments) at the <a href="http://www.digitalworlds.ufl.edu/">Digital Worlds Institute</a>. You can find more information about how to join our graduate and undergraduate programs <a href="http://www.digitalworlds.ufl.edu/programs/">at this link (www.digitalworlds.ufl.edu)</a>.<br><br>
+<font color="#FF0000">If you use this Java library in your research, please cite the following article, which introduced this library:</font><br>
+A. Barmpoutis. 'Tensor Body: Real-time Reconstruction of the Human Body and Avatar Synthesis from RGB-D', IEEE Transactions on Cybernetics, Special issue on Computer Vision for RGB-D Sensors: Kinect and Its Applications, October 2013, Vol. 43(5), Pages: 1347-1356. <a href="Kinect_Avatars.pdf">Download PDF - Kinect Avatars paper</a>  [<a href="http://www.youtube.com/watch?v=zBSiiOIEiPI">VIDEO DEMO</a>]
+</font>
+<br>
+<br>
+<div class="sourcecode">
+<strong><font color='#7f0055'>package</font></strong>&nbsp;edu.ufl.digitalworlds.j4k;
+<br/>
+<br/><strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;J4KSDK&nbsp;{
+</div>
+<br>
+<font class="mainfont">The following methods construct a new object of the J4KSDK class and offer different ways to start/stop the various streams of the Kinect sensor (depth, video, skeleton).</font>
+<br>
+<br>
+<div class="sourcecode">
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*The&nbsp;constructor&nbsp;of&nbsp;the&nbsp;J4KSDK&nbsp;class.&nbsp;It&nbsp;establishes&nbsp;connection&nbsp;with&nbsp;the&nbsp;native&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library,&nbsp;which&nbsp;uses&nbsp;the&nbsp;Microsoft's&nbsp;Kinect&nbsp;SDK.&nbsp;This&nbsp;constructor&nbsp;can&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;automatically&nbsp;initialize&nbsp;the&nbsp;object&nbsp;based&nbsp;on&nbsp;the&nbsp;type&nbsp;of&nbsp;the&nbsp;Kinect&nbsp;sensor&nbsp;that&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;connected. If various types of sensors are connected priority is given to 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kinect 1 devices.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;J4KSDK();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*These&nbsp;two&nbsp;constants&nbsp;specify&nbsp;the&nbsp;different&nbsp;types&nbsp;of&nbsp;Kinect&nbsp;sensors&nbsp;to&nbsp;be&nbsp;used
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;following&nbsp;constructors.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public&nbsp;static&nbsp;final&nbsp;byte&nbsp;MICROSOFT_KINECT_1&nbsp;=&nbsp;0x1;</font></strong>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public&nbsp;static&nbsp;final&nbsp;byte&nbsp;MICROSOFT_KINECT_2&nbsp;=&nbsp;0x2;</font></strong>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*Another&nbsp;constructor&nbsp;of&nbsp;the&nbsp;J4KSDK&nbsp;class.&nbsp;This&nbsp;constructor&nbsp;instantiates&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;object&nbsp;based&nbsp;the&nbsp;type&nbsp;of&nbsp;the&nbsp;Kinect&nbsp;sensor,&nbsp;which&nbsp;is&nbsp;passed&nbsp;as&nbsp;argument.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;J4KSDK(byte kinect_type);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;constructor&nbsp;instantiates&nbsp;the&nbsp;object&nbsp;based&nbsp;the&nbsp;type&nbsp;of&nbsp;the&nbsp;Kinect&nbsp;sensor&nbsp;and
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id,&nbsp;which&nbsp;are&nbsp;passed&nbsp;as&nbsp;arguments. For example if there are two Kinect 1 sensors,
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the first one corresponds to id=0 and the second one to id=1.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;J4KSDK(byte kinect_type, int id);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*The&nbsp;following&nbsp;constants&nbsp;represent&nbsp;the&nbsp;different&nbsp;types of data&nbsp;streams.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;COLOR&nbsp;=&nbsp;0x1;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;INFRARED&nbsp;=&nbsp;0x2;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;LONG_EXPOSURE_INFRARED&nbsp;=&nbsp;0x4;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;DEPTH&nbsp;=&nbsp;0x8;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*PLAYER_INDEX is a stream of 2D image frames, which contain the id of the depicted
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;player in each pixel of the depth frame.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;PLAYER_INDEX&nbsp;=&nbsp;0x10;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;SKELETON&nbsp;=&nbsp;0x20;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*UV is a stream of 2D frames, which contain the U,V texture coordinate mapping for
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;each pixel in the depth frame.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;UV&nbsp;=&nbsp;0x100;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*XYZ is a stream of 2D frames, which contain the X,Y,Z coordinates that correspond
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to each depth pixel in the depth frame.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;XYZ&nbsp;=&nbsp;0x1000;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/* This method turns on the Kinect sensor and initializes the data streams
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified by the input flags. The flags can be specified using the above types
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of streams according to your needs. For example flag=COLOR | DEPTH | SKELETON;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initializes the color, depth, and skeleton streams.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;start(<strong><font color='#7f0055'>int</font></strong>&nbsp;flags);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;turns&nbsp;off&nbsp;the&nbsp;Kinect&nbsp;sensor,&nbsp;and&nbsp;stops&nbsp;all&nbsp;the&nbsp;open&nbsp;streams.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;stop();
+</div>
+<br>
+
+
+<font class="mainfont">The following 3 abstract methods are automatically called every time a new data frame is received from the Kinect sensor. You have to implement them in your own program according to the needs of your application. A simple implementation is <a href="examples.html#how">available here</a>.</font>
+<br>
+<br>
+<div class="sourcecode">
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;abstract&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;a&nbsp;new&nbsp;depth&nbsp;frame&nbsp;is&nbsp;received&nbsp;by&nbsp;the&nbsp;sensor.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Optionally,&nbsp;the&nbsp;corresponding&nbsp;player index, XYZ coordinates in the 3D space and
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U,V&nbsp;mapping&nbsp;to&nbsp;the&nbsp;color&nbsp;frame&nbsp;could&nbsp;also&nbsp;be&nbsp;provided for each pixel of the depth
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame,&nbsp;if&nbsp;PLAYER_INDEX,&nbsp;XYZ, or UV flags were used when the stream started.*/</font>&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;onDepthFrameEvent(<strong><font color='#7f0055'>short</font></strong>[]&nbsp;depth_frame,&nbsp;<strong><font color='#7f0055'>byte</font></strong>[]&nbsp;player_index,&nbsp;<br><strong><font color='#7f0055'>float</font></strong>[]&nbsp;xyz,&nbsp;<strong><font color='#7f0055'>float</font></strong>[]&nbsp;uv);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;abstract&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;a&nbsp;new&nbsp;skeleton&nbsp;frame&nbsp;is&nbsp;received&nbsp;by
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;sensor.&nbsp;The&nbsp;skeleton&nbsp;data&nbsp;contain&nbsp;flags&nbsp;that&nbsp;indicate&nbsp;which&nbsp;of&nbsp;the&nbsp;6
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skeletons&nbsp;is&nbsp;tracked,&nbsp;the&nbsp;coordinates&nbsp;and&nbsp;orientations&nbsp;of&nbsp;the&nbsp;joints&nbsp;of&nbsp;the
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skeletons,&nbsp;and&nbsp;the&nbsp;state&nbsp;of&nbsp;each&nbsp;joint&nbsp;(i.e. TRACKED, INFERRED, or NOT_TRACKED
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from the Skeleton class).*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;onSkeletonFrameEvent(<strong><font color='#7f0055'>boolean</font></strong>[]&nbsp;skeleton_tracked,&nbsp;<strong><font color='#7f0055'>float</font></strong>[]&nbsp;<br>joint_positions,&nbsp;<strong><font color='#7f0055'>float</font></strong>[]&nbsp;joint_orientations,&nbsp;<strong><font color='#7f0055'>byte</font></strong>[]&nbsp;joint_state);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;abstract&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;a&nbsp;new&nbsp;color&nbsp;frame&nbsp;is&nbsp;received&nbsp;by&nbsp;the&nbsp;sensor
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;(in&nbsp;raw&nbsp;BGRA&nbsp;format).*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;onColorFrameEvent(<strong><font color='#7f0055'>byte</font></strong>[]&nbsp;color_data);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;a&nbsp;new&nbsp;infrared&nbsp;frame&nbsp;is&nbsp;received&nbsp;by&nbsp;the&nbsp;sensor. You
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;can override this method with your own implementation.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;onInfraredFrameEvent(<strong><font color='#7f0055'>short</font></strong>[]&nbsp;data);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;a&nbsp;new&nbsp;long&nbsp;exposure&nbsp;infrared&nbsp;frame&nbsp;is&nbsp;received&nbsp;by&nbsp;the
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sensor. You can 
+override this method with your own implementation.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;onLongExposureInfraredFrameEvent(<strong><font color='#7f0055'>short</font></strong>[]&nbsp;data);
+</div>
+<br>
+
+<font class="mainfont">At any time you can get the most recent data frame received from the Kinect sensor using the following methods. Typically, these methods will not be used because the actual kinect data processing should be performed inside the implementation of the 3 abstract methods describred above.</font>
+<br>
+<br>
+<div class="sourcecode">
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;most&nbsp;recent&nbsp;infrared&nbsp;frame&nbsp;data.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>short</font></strong>[]&nbsp;getInfraredFrame();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;most&nbsp;recent&nbsp;long&nbsp;exposure&nbsp;infrared&nbsp;frame&nbsp;data.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>short</font></strong>[]&nbsp;getLongInfraredFrame();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;most&nbsp;recent&nbsp;color&nbsp;frame&nbsp;data.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>byte</font></strong>[]&nbsp;getColorFrame();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;most&nbsp;recent&nbsp;skeleton&nbsp;data&nbsp;as&nbsp;Skeleton&nbsp;objects.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Skeleton[]&nbsp;getSkeletons();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;most&nbsp;recent&nbsp;depth&nbsp;frame.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>short</font></strong>[]&nbsp;getDepthFrame();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;XYZ&nbsp;coordinates&nbsp;of&nbsp;the&nbsp;most&nbsp;recent&nbsp;depth&nbsp;frame.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>[]&nbsp;getXYZ();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;UV&nbsp;mapping&nbsp;of&nbsp;the&nbsp;most&nbsp;recent&nbsp;depth&nbsp;frame.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>[]&nbsp;getUV();
+</div>
+<br>
+<font class="mainfont">The J4KSDK class contains a method, the 'showViewerDialog', which displays the streams of the Kinect sensor and also contains a simple graphical user interface for changing some of the parameters of the sensor.</font>
+<br>
+<br>
+<div class="sourcecode">
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;starts&nbsp;a&nbsp;dialog&nbsp;window&nbsp;that&nbsp;shows&nbsp;the&nbsp;current&nbsp;video,&nbsp;depth,&nbsp;and
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skeleton&nbsp;frames,&nbsp;as&nbsp;well&nbsp;as&nbsp;other&nbsp;information&nbsp;about&nbsp;the&nbsp;sensor.&nbsp;It&nbsp;requires
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;JOGL&nbsp;library.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;showViewerDialog();
+</div>
+<br>
+<font class="mainfont">This is a screenshot of the dialog window that opens when you call the 'showViewerDialog' method described above.<br><img src="kinectviewer.jpg"><br><br>
+The following methods return the current values of various parameters of the Kinect streams.</font>
+<br>
+<br>
+<div class="sourcecode">
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;current&nbsp;status&nbsp;of&nbsp;the&nbsp;sensor.*/</font>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;isInitialized();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;type&nbsp;of&nbsp;kinect&nbsp;controlled&nbsp;by&nbsp;this&nbsp;object.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public&nbsp;byte&nbsp;</font></strong>getDeviceType();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;J4K&nbsp;implementation&nbsp;object&nbsp;that&nbsp;corresponds&nbsp;to&nbsp;the
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type of Kinect&nbsp;controlled&nbsp;by&nbsp;this&nbsp;object.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public&nbsp;Object&nbsp;</font></strong>getJ4KClass();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;maximum number of possible tracked skeletons 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;according&nbsp;to&nbsp;the&nbsp;version&nbsp;of Kinect&nbsp;device.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public&nbsp;int&nbsp;</font></strong>getSkeletonCountLimit();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;color&nbsp;stream&nbsp;(in&nbsp;pixels).*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;getColorWidth();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;color&nbsp;stream&nbsp;(in&nbsp;pixels).*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;getColorHeight();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;depth&nbsp;stream&nbsp;(in&nbsp;pixels).*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;getDepthWidth();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;depth&nbsp;stream&nbsp;(in&nbsp;pixels).*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;getDepthHeight();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;infrared&nbsp;stream&nbsp;(in&nbsp;pixels).*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;getInfraredWidth();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;infrared&nbsp;stream&nbsp;(in&nbsp;pixels).*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;getInfraredHeight();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;long exposure infrared&nbsp;stream&nbsp;(in&nbsp;pixels).*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;getLongExposureInfraredWidth();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;long exposure infrared stream (in
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pixels).*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;getLongExposureInfraredHeight();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;focal&nbsp;length&nbsp;along the x-axis of the depth camera.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;getFocalLengthX();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;focal&nbsp;length&nbsp;along the y-axis of the depth camera.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;getFocalLengthY();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;X&nbsp;coordinate&nbsp;of&nbsp;the&nbsp;Principal&nbsp;point of the depth 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;camera.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;getPrincipalPointX();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;Y&nbsp;coordinate&nbsp;of&nbsp;the&nbsp;Principal&nbsp;point of the depth
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;camera.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;getPrincipalPointY();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the 2nd order&nbsp;radial&nbsp;distortion of the depth camera.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;getRadialDistortionOrder2();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the 4th order&nbsp;radial&nbsp;distortion of the depth camera.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;getRadialDistortionOrder4();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the 6th order&nbsp;radial&nbsp;distortion of the depth camera.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;getRadialDistortionOrder6();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;enables or disables the computation of the U,V texture mapping. It
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is disabled by&nbsp;default.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;computeUV(<strong><font color='#7f0055'>boolean</font></strong>&nbsp;flag);
+</div>
+<br>
+<font class="mainfont">Finally, you can set or read various parameters of the Kinect sensor (elevation angle, depth sensing mode, accelerometer values, total number of connected sensors) using the following methods. These parameters are features of the Kinect 1 sensor and may not apply to the new Kinect sensor.</font>
+<br>
+<br>
+<div class="sourcecode">
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;elevation&nbsp;angle&nbsp;of&nbsp;the&nbsp;Kinect 1 sensor&nbsp;(in&nbsp;degrees)*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>long</font></strong>&nbsp;getElevationAngle();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;turns&nbsp;on/off&nbsp;the&nbsp;'near&nbsp;depth mode'&nbsp;sensing&nbsp;of&nbsp;the Kinect 1 sensor.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;setNearMode(<strong><font color='#7f0055'>boolean</font></strong>&nbsp;flag);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;current&nbsp;mode&nbsp;of&nbsp;depth&nbsp;sensing in Kinect 1.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;getNearMode();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;returns&nbsp;the&nbsp;current&nbsp;reading&nbsp;of&nbsp;the&nbsp;accelerometer of Kinect 1.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>float</font>[]</strong>&nbsp;getAccelerometerReading();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;enables or disables&nbsp;the&nbsp;seated&nbsp;skeleton&nbsp;tracking&nbsp;mode in Kinect 1.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;setSeatedSkeletonTracking(<strong><font color='#7f0055'>boolean</font></strong>&nbsp;flag);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;sets&nbsp;the&nbsp;depth&nbsp;resolution&nbsp;of&nbsp;the&nbsp;Kinect 1&nbsp;sensor. It must be used 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;before starting the stream with the start(int) method.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setDepthResolution(<strong><font color='#7f0055'>int</font></strong>&nbsp;w,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;h);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*This&nbsp;method&nbsp;sets&nbsp;the&nbsp;color&nbsp;resolution&nbsp;of&nbsp;the&nbsp;Kinect 1&nbsp;sensor. It must be used 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;before starting the stream with the start(int) method.*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setColorResolution(<strong><font color='#7f0055'>int</font></strong>&nbsp;w,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;h);
+<br/>
+</div>
+
+
+<br>
+<font class="mainfont">
+<font class="mainfont2"><b>What to do next:</b></font><br>
+<li>You can download several source code examples from the <a href="examples.html">Source Code Examples</a> website. </li>
+<li>You can also read a brief tutorial on <a href="examples.html#how">"How to write your own Kinect-Java programs"</a>.</li></font><br>
+<br>
+<font class="mainfont"><b>Disclaimer:</b> The names JAVA and KINECT and their associated logos are trademarks of their respective copyright owners Oracle and Microsoft. None of these companies endorse, fund, or are in any way associated with the J4K library.</font>
+<br>
+<br>
+<font class="mainfont"><b>Disclaimer:</b> This software is provided for free without any warranty expressed or implied for academic, research, and strictly non commercial purposes only. By downloading this library you accept the <a href="../terms.html" target="_blank">Terms and Conditions</a>.
+</font>
+<br>
+<br>
+</div>
+
+	</div>
+	<div id="myfooter"><h5><a href="http://www.digitalworlds.ufl.edu/">University of Florida, Digital Worlds Institute, P.O.Box 115810, 101 Norman Gym, Gainesville, FL 32611-5810, USA</a></h5></div>
+</div>
+
+</body>
+
+<!-- Mirrored from research.dwi.ufl.edu/projects/ufdw/j4k/J4KSDK.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jan 2024 19:31:23 GMT -->
+</html>

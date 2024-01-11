@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<!-- Mirrored from research.dwi.ufl.edu/projects/ufdw/j4k/eclipse.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jan 2024 19:31:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Java for Kinect (J4K) Library</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../ufdw.css">
+</head>
+<body>
+
+
+<div id="globalcontainer">
+	<div id="myheader"><a href="http://www.digitalworlds.ufl.edu/programs/"><img src="j4k_banner.png"></a></div>
+	<div id="myheaderspace"></div>
+	<div id="maincontainer">
+		<div id="aside">
+			<div id="mymainmenu">
+			<a href="../index-2.html"><font class="mainmenufont">UFDW Java library</font></a><br><br>
+			<a href="index.html"><font class="mainmenufont">J4K Java library</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="J4KSDK.html"><font class="mainmenufont">J4KSDK.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="DepthMap.html"><font class="mainmenufont">DepthMap.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="Skeleton.html"><font class="mainmenufont">Skeleton.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="VideoFrame.html"><font class="mainmenufont">VideoFrame.class API</font></a><br><br>
+			<a href="examples.html"><font class="mainmenufont">Source Code Examples</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="SimpleExample.html"><font class="mainmenufont">SimpleExample</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="VideoViewerApp.html"><font class="mainmenufont">VideoViewerApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="KinectViewerApp.html"><font class="mainmenufont">KinectViewerApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="AugmentedRealityApp.html"><font class="mainmenufont">AugmentedRealityApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="ImageAvatarApp.html"><font class="mainmenufont">ImageAvatarApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="XEDConvertApp.html"><font class="mainmenufont">XEDConvertApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="MultipleKinectApp.html"><font class="mainmenufont">MultipleKinectApp</font></a><br><br>			<a href="projects.html"><font class="mainmenufont">J4K Projects Gallery</font></a> <img src="star.gif" align="middle"><br>
+			<a href="papers.html"><font class="mainmenufont">Published Papers</font></a><br><br>
+			<a href="../download.html"><font class="mainmenufont">Download</font></a><br>
+			<a href="eclipse.html"><font class="mainmenufont">Install in Eclipse</font></a><br>
+			<a href="http://www.youtube.com/watch?v=q0K4Y4g-hj0"><font class="mainmenufont">Watch video tutorial</font></a><br><br>
+			<a href="people.html"><font class="mainmenufont">People</font></a><br><br>
+			<a href="faq.html"><font class="mainmenufont">Frequently Asked Questions</font></a><br><br>
+			</div>
+		</div>
+		<div id="mainarea"><h1>How to setup a J4K project in Eclipse (from Git)</h1>
+<br>
+<font class="mainfont">This tutorial will guide you on how to setup your workspace in <a href="http://www.eclipse.org/">eclipse</a> in order to use the J4K library in your own Java-based Kinect-enabled projects. To help you start working with J4K, several simple <a href="examples.html">source code examples</a> are provided and can be installed in <a href="http://www.eclipse.org/">eclipse</a> by following the instructions given in this tutorial. You can also watch a video tutorial [<a href="http://www.youtube.com/watch?v=q0K4Y4g-hj0">VIDEO LINK</a>].</font><br><br>
+
+<font class="mainfont2"><b>Step 1 of 3. Download required files</b></font><br>
+<font class="mainfont">This tutorial assumes that you have already installed eclipse in your computer. If you are new to eclipse, you can download it from <a href="http://www.eclipse.org/">www.eclipse.org</a> and install it in your computer. Eclipse is a very popular and easy-to-use environment for developing software applications in Java as well as other programming languages.<br><br>
+
+By now you should have installed eclipse and you can now proceed to the next step.
+</font><br><br>
+
+<font class="mainfont2"><b>Step 2 of 3. Import J4K source code examples from Git</b></font><br>
+<font class="mainfont">Open eclipse, and from the 'File' menu select 'Import...' and then select 'Git' &gt; 'Projects from Git'.</font><br>
+<img src="gitimport1.jpg"><br><br>
+<font class="mainfont">Select the 'URI' option and click 'Next'.</font><br>
+<img src="gitimport2.jpg"><br><br>
+<font class="mainfont">Type the URI of the git repository as shown in the image below and then click 'Next' (a few times) and 'Finish'. The link to the Git repository is the  following: <a href="http://research.dwi.ufl.edu/git/j4kdemo">http://research.dwi.ufl.edu/git/j4kdemo</a> </font><br>
+<img src="gitimport3.jpg"><br><br>
+<font class="mainfont">After that, the new project in the project explorer should appear as it is shown in the image below.</font><br>
+<img src="gitprojectexplorer.jpg"><br>
+<br><br>
+
+<font class="mainfont2"><b>Step 3 of 3. Execute sample applications</b></font><br>
+<font class="mainfont">The provided J4K source code contains several example applications. Each of these applications can run as standalone Java application or a Java applet. From the project explorer expand the folder of the corresponding application and then open the ...App.java or ...Applet.java file. To run the example click on the green play button on the top of the eclipse window, or from the menu select 'Run' &gt; 'Run', or use the shortcut Ctrl+F11.<br><br>
+Enjoy!
+</font><br>
+<br>
+
+<h1>How to setup a J4K project in Eclipse (manually)</h1>
+<br>
+<font class="mainfont2"><b>Step 1 of 3. Download required files</b></font><br>
+<font class="mainfont">This tutorial assumes that you have already installed eclipse in your computer. If you are new to eclipse, you can download it from <a href="http://www.eclipse.org/">www.eclipse.org</a> and install it in your computer. Eclipse is a very popular and easy-to-use environment for developing software applications in Java as well as other programming languages.<br><br>
+
+Download the source code of the J4K examples from the <a href="examples.html">Source Code Examples web-site</a>. The source code of all the available examples is provided in 1 zip file.<br><br>
+
+By now you should have downloaded 1 ZIP file and installed eclipse in your system and you can now proceed to the next step.
+</font><br><br>
+
+<font class="mainfont2"><b>Step 2 of 3. Import Java project</b></font><br>
+<font class="mainfont">Open eclipse, and from the 'File' menu select 'Import' &gt; 'General' &gt; 'Existing Projects into Workspace'</font><br>
+<img src="newproject.jpg"><br>
+<font class="mainfont">A dialog window will open (similar to the one shown below).</font><br>
+<img src="import2.jpg"><br>
+ <font class="mainfont">Select 'Archive File' and click 'Browse' to find the zip file you downloaded in step 1 with the J4K source code. After that click on 'Finish'. The j4kdemo project should appear in your project explorer as shown in the image below.</font><br>
+<img src="projectexplorer2.jpg"><br><br>
+
+<font class="mainfont2"><b>Step 3 of 3. Execute sample applications</b></font><br>
+<font class="mainfont">The provided J4K source code contains several example applications. Each of these applications can run as standalone Java application or a Java applet. From the project explorer expand the folder of the corresponding application and then open the ...App.java or ...Applet.java file. To run the example click on the green play button on the top of the eclipse window, or from the menu select 'Run' &gt; 'Run', or use the shortcut Ctrl+F11.<br><br>
+Enjoy!
+</font><br>
+
+<br>
+<font class="mainfont"><b>Disclaimer:</b> The names JAVA and KINECT and their associated logos are trademarks of their respective copyright owners Oracle and Microsoft. None of these companies endorse, fund, or are in any way associated with the J4K library.</font>
+<br>
+<br>
+<font class="mainfont"><b>Disclaimer:</b> This software is provided for free without any warranty expressed or implied for academic, research, and strictly non commercial purposes only. By downloading this library you accept the <a href="../terms.html" target="_blank">Terms and Conditions</a>.
+</font>
+<br>
+<br>
+</div>
+
+	</div>
+	<div id="myfooter"><h5><a href="http://www.digitalworlds.ufl.edu/">University of Florida, Digital Worlds Institute, P.O.Box 115810, 101 Norman Gym, Gainesville, FL 32611-5810, USA</a></h5></div>
+</div>
+
+</body>
+
+<!-- Mirrored from research.dwi.ufl.edu/projects/ufdw/j4k/eclipse.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jan 2024 19:31:17 GMT -->
+</html>

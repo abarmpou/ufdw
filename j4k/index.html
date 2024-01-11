@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<!-- Mirrored from research.dwi.ufl.edu/projects/ufdw/j4k/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jan 2024 19:30:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Java for Kinect (J4K) Library</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../ufdw.css">
+</head>
+<body>
+
+
+<div id="globalcontainer">
+	<div id="myheader"><a href="http://www.digitalworlds.ufl.edu/programs/"><img src="j4k_banner.png"></a></div>
+	<div id="myheaderspace"></div>
+	<div id="maincontainer">
+		<div id="aside">
+			<div id="mymainmenu">
+			<a href="../index-2.html"><font class="mainmenufont">UFDW Java library</font></a><br><br>
+			<a href="index.html"><font class="mainmenufont">J4K Java library</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="J4KSDK.html"><font class="mainmenufont">J4KSDK.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="DepthMap.html"><font class="mainmenufont">DepthMap.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="Skeleton.html"><font class="mainmenufont">Skeleton.class API</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="VideoFrame.html"><font class="mainmenufont">VideoFrame.class API</font></a><br><br>
+			<a href="examples.html"><font class="mainmenufont">Source Code Examples</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="SimpleExample.html"><font class="mainmenufont">SimpleExample</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="VideoViewerApp.html"><font class="mainmenufont">VideoViewerApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="KinectViewerApp.html"><font class="mainmenufont">KinectViewerApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="AugmentedRealityApp.html"><font class="mainmenufont">AugmentedRealityApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="ImageAvatarApp.html"><font class="mainmenufont">ImageAvatarApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="XEDConvertApp.html"><font class="mainmenufont">XEDConvertApp</font></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="MultipleKinectApp.html"><font class="mainmenufont">MultipleKinectApp</font></a><br><br>			<a href="projects.html"><font class="mainmenufont">J4K Projects Gallery</font></a> <img src="star.gif" align="middle"><br>
+			<a href="papers.html"><font class="mainmenufont">Published Papers</font></a><br><br>
+			<a href="../download.html"><font class="mainmenufont">Download</font></a><br>
+			<a href="eclipse.html"><font class="mainmenufont">Install in Eclipse</font></a><br>
+			<a href="http://www.youtube.com/watch?v=q0K4Y4g-hj0"><font class="mainmenufont">Watch video tutorial</font></a><br><br>
+			<a href="people.html"><font class="mainmenufont">People</font></a><br><br>
+			<a href="faq.html"><font class="mainmenufont">Frequently Asked Questions</font></a><br><br>
+			</div>
+		</div>
+		<div id="mainarea"><h1>J4K Java Library</h1>
+<br>
+<font class="mainfont">The J4K library is a <a href="#popular">popular</a> open source Java library that implements a <a href="http://www.java.com/">Java</a> binding for the <a href="http://www.microsoft.com/en-us/kinectforwindows/">Microsoft's Kinect SDK</a>. It communicates with a native Windows library, which handles the depth, color, infrared, and skeleton streams of the Kinect using the <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/jni/">Java Native Interface (JNI)</a>.<br><br>
+
+The J4K library is compatible with all kinect devices (Kinect for Windows, Kinect for XBOX, new Kinect, or Kinect 2) and allows you to control multiple sensors of any type from a single application, as long as your system capabilities permit. For example you can control three Kinect 1 sensors, or one Kinect  1 and one Kinect 2 connected via USB 3.0 to the same computer.
+Furthermore, the J4K library contains several convenient Java classes that convert the packed depth frames, skeleton frames, and color frames received by a Kinect sensor into easy-to-use Java objects. <br><br>
+
+Optionally, you can use <a href="http://jogamp.org/jogl/www/">JogAmp's JOGL Java library</a> to visualize the Kinect data as 3D textured surfaces in openGL (for more technical details you can read <a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6583279">IEEE Transactions on Cybernetics, 2013</a>, or watch the <a href="http://www.youtube.com/watch?v=zBSiiOIEiPI">VIDEO DEMO</a>). The use of JOGL library is optional, and is not required if you don't use the drawing methods provided in the J4K Java classes.<br><br>
+
+This is a screenshot of the Kinect Viewer dialog window, which is included in the J4K Java library and offers an easy way to view the current data and a simple, graphical user interface for changing the parameters of the sensor.<br> 
+<img src="kinectviewer.jpg"><br><br>
+
+The screenshot below shows a 3D visualization of the Kinect depth stream. <a href="KinectViewerApp.html">More info...</a><br> 
+<img src="depthview.jpg"><br><br>
+
+An example of visualizing the Kinect data as 3D textured surfaces in openGL is shown below. <a href="KinectViewerApp.html">More info...</a><br> 
+<img src="3dviews.jpg"><br><br>
+
+The J4K library is included in the <a href="http://www.digitalworlds.ufl.edu/">University of Florida Digital Worlds</a> (ufdw.jar) Java library. This library was developed by Prof. <a href="http://www.digitalworlds.ufl.edu/angelos">Angelos Barmpoutis</a>, and further extended by the students and faculty who work in the SAGE program (Serious and Applied Gaming Environments) at the <a href="http://www.digitalworlds.ufl.edu/">University of Florida Digital Worlds Institute</a>. You can find more information about how to join our graduate and undergraduate programs <a href="http://www.digitalworlds.ufl.edu/programs/">at this link (www.digitalworlds.ufl.edu)</a>.<br><br>
+<font color="#FF0000">If you use this Java library in your research, please cite the following article, which introduced this library:</font><br>
+A. Barmpoutis. 'Tensor Body: Real-time Reconstruction of the Human Body and Avatar Synthesis from RGB-D', IEEE Transactions on Cybernetics, Special issue on Computer Vision for RGB-D Sensors: Kinect and Its Applications, October 2013, Vol. 43(5), Pages: 1347-1356. <a href="Kinect_Avatars.pdf">Download PDF - Kinect Avatars paper</a>  [<a href="http://www.youtube.com/watch?v=zBSiiOIEiPI">VIDEO DEMO</a>]
+</font><br>
+<br>
+<font class="mainfont">
+<font class="mainfont2"><b>Where to begin?</b></font><br>
+<li>You can download several source code examples from the <a href="examples.html">Source Code Examples</a> website. </li>
+<li>You can also read a brief tutorial on <a href="examples.html#how">"How to write your own Kinect-Java programs"</a>.</li>
+<li>If you work in <a href="http://www.processing.org/">Processing</a> you can download the J4K Kinect library for Processing from the <a href="../download.html">Downloads</a> website. </li>
+<li>Optionally, you can browse the <a href="projects.html">Gallery of J4K projects</a> to see how other people use this library.</li>
+</font><br>
+<font class="mainfont">
+<a name="popular"></a>
+<font class="mainfont2"><b>Statistics</b></font><br>
+By using the J4K Java library for Kinect you join a community of thousands active users from more than 50 countries worldwide ranked by the number of J4K users as follows: USA (26%), Germany (10%), Mexico, Brazil, Italy, France (5%), UK, Japan, Poland (3%), Canada, India, Australia (2%), Switzerland, Argentina, Netherlands, South Africa, Turkey, Greece, New Zealand, Indonesia, Slovakia (1%), Portugal, Austria, Spain, Zimbabwe, Sweden, Morocco, Iran, Belgium, Bulgaria, Taiwan, Russia, Norway, Croatia, Czech, Ukraine, Singapore, Romania, Luxembourg, Israel, Lithuania, Hong Kong, Finland, Uruguay, Thailand, Serbia, Ghana, Philippines, South Korea, Bahrain, Paraguay, Pakistan, Ireland, Estonia, and Cyprus. (Based on <a href="eclipse.html">non-Git installations</a> of the J4K library in the period November 2013 - November 2014.)
+</font><br>
+
+<br>
+<font class="mainfont"><b>Disclaimer:</b> The names JAVA and KINECT and their associated logos are trademarks of their respective copyright owners Oracle and Microsoft. None of these companies endorse, fund, or are in any way associated with the J4K library.</font>
+<br>
+<br>
+<font class="mainfont"><b>Disclaimer:</b> This software is provided for free without any warranty expressed or implied for academic, research, and strictly non commercial purposes only. By downloading this library you accept the <a href="../terms.html" target="_blank">Terms and Conditions</a>.
+</font>
+<br>
+<br>
+</div>
+
+	</div>
+	<div id="myfooter"><h5><a href="http://www.digitalworlds.ufl.edu/">University of Florida, Digital Worlds Institute, P.O.Box 115810, 101 Norman Gym, Gainesville, FL 32611-5810, USA</a></h5></div>
+</div>
+
+</body>
+
+<!-- Mirrored from research.dwi.ufl.edu/projects/ufdw/j4k/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jan 2024 19:30:59 GMT -->
+</html>
